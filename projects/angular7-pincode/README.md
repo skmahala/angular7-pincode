@@ -45,16 +45,16 @@ import { Angular7PincodeModule } from 'angular7-pincode';
 In your template
 
 ```html
-<<angular7-pincode>
+<angular7-pincode>
   <!-- Content -->
-</<angular7-pincode>
+</angular7-pincode>
 ```
 
 <a name="options">
 
 ## Options
 
-### Scrollbar inputs
+### directive inputs
 
 - **[size]**: number
 
