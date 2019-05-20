@@ -1,8 +1,25 @@
 {
-  "name": "angular7-pincode",
-  "version": "0.0.1",
-  "peerDependencies": {
-    "@angular/common": "^7.2.0",
-    "@angular/core": "^7.2.0"
-  }
+    "name": "angular7-pincode",
+    "version": "0.0.1",
+    "description": "a simple directive for otp input template like on mobile otp input template",
+    "author": "Sunil Kumar",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/skmahala/angular7-pincode.git"
+    },
+    "bugs": {
+        "url": "https://github.com/skmahala/angular7-pincode/issues"
+    },
+    "keywords": [
+        "angular",
+        "pincode",
+        "directive",
+        "template",
+        "otp",
+        "otp-input-template"
+    ],
+    "peerDependencies": {
+        "@angular/common": "^7.2.0",
+        "@angular/core": "^7.2.0"
+    }
 }
