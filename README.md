@@ -4,7 +4,6 @@
 
 Custom otp-input template for Angular, it look likes otp-input template as mobile.
 
-___
 
 ## Table of Contents
 
@@ -12,6 +11,7 @@ ___
 - [Usage](#usage)
 - [Options](#options)
 - [Callback](#function)
+- [Example](#example)
 - [Issues](#issues)
 - [Author](#author)
 
@@ -31,7 +31,7 @@ npm i -S angular7-pincode
 
 Import `Angular7PincodeModule` in your module
 
-```js
+```ts
 import { Angular7PincodeModule } from 'angular7-pincode';
 
 @NgModule({
@@ -45,8 +45,7 @@ import { Angular7PincodeModule } from 'angular7-pincode';
 In your template
 
 ```html
-<angular7-pincode>
-  <!-- Content -->
+<angular7-pincode >
 </angular7-pincode>
 ```
 
@@ -57,17 +56,49 @@ In your template
 ### directive inputs
 
 - **[size]**: number
-
   length of otp input, default `4`
 
+- **[class]**: string
+  your custom class on otp input
 
-***
+
+
 
 <a name="function"> 
 
 ### Callback functions
 
-when all otp enter it emit a event function (OnFillAll) and return a otp string
+- **(onFillAll)**: function
+ return a otp string on every keypress
+
+
+<a name="example"> 
+
+ ## examples
+
+### default settings
+
+```html
+<angular7-pincode (onFillAll)="OnFillAll($event)">
+</angular7-pincode>
+```
+```ts
+OnFillAll(data:any){
+  console.log(data)
+}
+```
+
+### with size and custom class option
+
+```html
+<angular7-pincode [size]="6" [class]="your-class" (onFillAll)="OnFillAll($event)">
+</angular7-pincode>
+```
+```ts
+OnFillAll(data:any){
+  console.log(data)
+}
+```
 
 <a name="issues"/>
 

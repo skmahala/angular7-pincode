@@ -1,8 +1,9 @@
 {
     "name": "angular7-pincode",
-    "version": "0.0.2",
+    "version": "0.0.4",
     "description": "a simple directive for otp input template like on mobile otp input template",
     "author": "Sunil Kumar",
+    "license": "MIT",
     "repository": {
         "type": "git",
         "url": "https://github.com/skmahala/angular7-pincode.git"

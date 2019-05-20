@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChildren, ElementRef, QueryList, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, ViewChildren, ElementRef, QueryList, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'angular7-pincode',
@@ -18,13 +18,12 @@ import { Component, OnInit, Input, ViewChildren, ElementRef, QueryList, Output, 
       border: 1px solid #ddd;
       border-right: none;
       text-align: center;
-      width: 40px;
-      max-width: 40px;
     }
     .otp-input:last-child{
       border-right: 1px solid #ddd;
     }
-    `]
+    `],
+  encapsulation: ViewEncapsulation.None
 })
 export class Angular7PincodeComponent implements OnInit {
   @ViewChildren('otpInput') allOtpInputs: QueryList<ElementRef>
@@ -53,9 +52,7 @@ export class Angular7PincodeComponent implements OnInit {
     }
     setTimeout(() => {
       this.PinCode = this.Pin.join('');
-      if (this.PinCode.length == this.size) {
-        this.onFillAll.emit(this.PinCode);
-      }
+      this.onFillAll.emit(this.PinCode);
     })
   }
   onKeyDown(event: any, index: any) {
