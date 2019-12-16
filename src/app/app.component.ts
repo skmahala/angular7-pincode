@@ -11,7 +11,7 @@ export class AppComponent implements OnInit {
   constructor() { }
   ngOnInit() {
   }
-  OnFillAll(data: any) {
-    alert("your otp is : " + data)
+  onFullFill(data: any) {
+    console.log("your otp is : " + data)
   }
 }

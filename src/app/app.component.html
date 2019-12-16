@@ -1,20 +1,20 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
-    <h1>
-        Welcome to {{ title }}!
-    </h1>
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
 </div>
 <h2>
-    with no input parameter default length (4)
+  with no input parameter default length (4)
 </h2>
 
 <div style="text-align:center;margin-bottom: 20px;">
-    <angular7-pincode (onFillAll)="OnFillAll($event)"></angular7-pincode>
+  <angular7-pincode (onFullFill)="onFullFill($event)"></angular7-pincode>
 </div>
 
 <h2>
-    with input parameter size you can pass otp size. in example we pass length as 6
+  with input parameter size you can pass otp size. in example we pass length as 6
 </h2>
 <div style="text-align:center;margin-bottom: 20px;">
-    <angular7-pincode [size]="6" (onFillAll)="OnFillAll($event)"></angular7-pincode>
+  <angular7-pincode [size]="6" (onFullFill)="onFullFill($event)"></angular7-pincode>
 </div>

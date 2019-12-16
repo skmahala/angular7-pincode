@@ -68,7 +68,7 @@ In your template
 
 ### Callback functions
 
-- **(onFillAll)**: function
+- **(onFullFill)**: function
  return a otp string on every keypress
 
 
@@ -79,11 +79,11 @@ In your template
 ### default settings
 
 ```html
-<angular7-pincode (onFillAll)="OnFillAll($event)">
+<angular7-pincode (onFullFill)="onFullFill($event)">
 </angular7-pincode>
 ```
 ```ts
-OnFillAll(data:any){
+onFullFill(data:any){
   console.log(data)
 }
 ```
@@ -91,11 +91,11 @@ OnFillAll(data:any){
 ### with size and custom class option
 
 ```html
-<angular7-pincode [size]="6" [class]="your-class" (onFillAll)="OnFillAll($event)">
+<angular7-pincode [size]="6" [class]="your-class" (onFullFill)="onFullFill($event)">
 </angular7-pincode>
 ```
 ```ts
-OnFillAll(data:any){
+onFullFill(data:any){
   console.log(data)
 }
 ```
