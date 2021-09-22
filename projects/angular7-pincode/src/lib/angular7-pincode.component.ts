@@ -4,7 +4,7 @@ import { Component, OnInit, Input, ViewChildren, ElementRef, QueryList, Output, 
   selector: 'angular7-pincode',
   template: `
    <div class="otp-container">
-    <input class="otp-input {{class}}" *ngFor="let pininput of Pin;let i = index;trackBy: trackByFn" id='otpInput{{i}}' #otpInput name='otpInput{{i}}' [(ngModel)]="Pin[i]" autocomplete='off' maxlength="1" [disabled]="currentIndex!=i" (keyup)="onKeyUp($event,i)" (keydown)="onKeyDown($event,i)"/>
+    <input class="otp-input {{class}}" *ngFor="let pininput of pin;let i = index;trackBy: trackByFn" #otpInput name='otpInput{{i}}' [(ngModel)]="pin[i]" autocomplete='off' maxlength="1" [disabled]="currentIndex!=i" (keyup)="onKeyUp($event,i)" (keydown)="onKeyDown($event,i)"/>
    </div>
   `,
   styles: [`
@@ -31,32 +31,47 @@ export class Angular7PincodeComponent implements OnInit {
   @Output() onFullFill = new EventEmitter<string>();
   @Input() size: number = 4;
   @Input() class: string = "";
-  Pin: any[] = [];
-  PinCode: string = "";
+  @Input() isOnlyNumeric: boolean = false;
+  pin: string[] = [];
+  pinCode: string = "";
   currentIndex: number = 0;
+  otpRegex: RegExp;
 
   constructor() { }
 
   ngOnInit() {
-    this.GetPin();
+    if (this.isOnlyNumeric) {
+      this.otpRegex = new RegExp(/[0-9]/);
+    }
+    else {
+      this.otpRegex = new RegExp(/[a-zA-Z0-9]/);
+    }
+    this.getPin();
   }
-  GetPin() {
+  getPin() {
     for (let i = 0; i < this.size; i++) {
-      this.Pin.push("");
+      this.pin.push("");
     }
   }
   onKeyUp(event: any, index: any) {
     let key: any = event.keyCode || event.which;
+    if (!this.otpRegex.test(event.key)) {
+      event.preventDefault();
+      this.pin[index] = "";
+      return false;
+    }
     if (key !== 8 && index != this.size - 1) {
       this.currentIndex = index + 1;
       setTimeout(() => {
         this.allOtpInputs.toArray()[index + 1].nativeElement.focus();
-      }, 10)
+      }, 100)
     }
-    setTimeout(() => {
-      this.PinCode = this.Pin.join('');
-      this.onFullFill.emit(this.PinCode);
-    })
+    this.pinCode = this.pin.join('');
+    if (this.pinCode.length == this.size) {
+      setTimeout(() => {
+        this.onFullFill.emit(this.pinCode);
+      })
+    }
   }
   onKeyDown(event: any, index: any) {
     let key: any = event.keyCode || event.which;
@@ -66,6 +81,7 @@ export class Angular7PincodeComponent implements OnInit {
       }, 10)
       setTimeout(() => {
         this.allOtpInputs.toArray()[index - 1].nativeElement.focus();
+        this.onFullFill.emit(null);
       }, 100)
     }
   }

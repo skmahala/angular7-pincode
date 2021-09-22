@@ -61,6 +61,9 @@ In your template
 - **[class]**: string
   your custom class on otp input
 
+- **[isOnlyNumeric]**: boolean
+take only as numeric value if true, default `false`
+
 
 
 
@@ -69,7 +72,7 @@ In your template
 ### Callback functions
 
 - **(onFullFill)**: function
- return a otp string on every keypress
+ return a otp string after all otp enter and return null on every backspace
 
 
 <a name="example"> 
@@ -92,6 +95,18 @@ onFullFill(data:any){
 
 ```html
 <angular7-pincode [size]="6" [class]="your-class" (onFullFill)="onFullFill($event)">
+</angular7-pincode>
+```
+```ts
+onFullFill(data:any){
+  console.log(data)
+}
+```
+
+### with option isOnlyNumeric
+
+```html
+<angular7-pincode [isOnlyNumeric]="true" (onFullFill)="onFullFill($event)">
 </angular7-pincode>
 ```
 ```ts
